@@ -7,7 +7,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping to make SmartTube better by reporting a bug.
+        Thank you for helping to improve SmartTube Mobile by reporting a bug.
+
+        If the problem is with playback, data loading or settings rather than the phone/tablet
+        interface, it is probably an upstream SmartTube bug - please report it there instead.
 
         Please fill in as much information as possible about your bug.
 
@@ -16,9 +19,9 @@ body:
     attributes:
       label: "Checklist"
       options:
-        - label: "I made sure that there are *no existing issues* - [open](https://github.com/yuliskov/SmartTube/issues) or [closed](https://github.com/yuliskov/SmartTube/issues?q=is%3Aissue+is%3Aclosed) - which I could contribute my information to."
+        - label: "I made sure that there are *no existing issues* - [open](https://github.com/alkevintan/SmartTubeMobile/issues) or [closed](https://github.com/alkevintan/SmartTubeMobile/issues?q=is%3Aissue+is%3Aclosed) - which I could contribute my information to."
           required: true
-        - label: "I have read the [FAQ](https://github.com/yuliskov/SmartTube#faq) and my problem isn't listed."
+        - label: "I have read the [README](https://github.com/alkevintan/SmartTubeMobile#status) and my problem is not a known gap."
           required: true
         - label: "I have taken the time to fill in all the required details. I understand that the bug report will be dismissed otherwise."
           required: true
@@ -29,19 +32,8 @@ body:
     id: app-version
     attributes:
      label: Affected version
-     description: "In which SmartTube version did you encounter the bug?"
+     description: "In which SmartTube Mobile version did you encounter the bug?"
      placeholder: "x.xx.x - Can be seen in the app from the 'About' section in Settings"
-    validations:
-      required: true
-
-  - type: dropdown
-    id: device-type
-    attributes:
-      label: Device Type
-      description: Is it Smart TV/Box or Phone
-      options:
-        - "Smart TV/Box"
-        - "Phone/Tablet"
     validations:
       required: true
 
@@ -51,7 +43,7 @@ body:
      label: Affected Android
      description: |
       With what operating system (+ version) did you encounter the bug?
-     placeholder: "Example: Android TV 10"
+     placeholder: "Example: Android 14"
     validations:
       required: true
 
@@ -82,7 +74,7 @@ body:
       label: Additional information
       description: |
         Any other information you'd like to include, for instance that
-        * Device (NVIDIA Shield, Xiaomi Mi Box, etc)
+        * Device (Pixel 8, Galaxy Tab S9, etc)
         * screenshot
         * your cat disabled your network connection
         * ...
