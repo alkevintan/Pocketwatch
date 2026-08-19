@@ -1,1 +1,9 @@
-Browse media content with your own rules on Android TV
+Pocketwatch is a touch-first client for YouTube on phones and tablets.
+
+It is a fork of SmartTube, which is built exclusively for Android TV and is not
+designed for handsets. Pocketwatch keeps SmartTube's playback and data layer and
+replaces the TV interface with one built for touch: a bottom navigation bar,
+responsive grids that adapt to screen width, comments on the video page, and a
+player with gesture seeking and fullscreen on rotation.
+
+Not affiliated with, endorsed by or supported by SmartTube, Google or YouTube.

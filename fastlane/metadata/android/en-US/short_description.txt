@@ -1,1 +1,1 @@
-Browse media content with your own rules on Android TV
+A phone and tablet client for YouTube
