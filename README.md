@@ -1,4 +1,4 @@
-# SmartTube Mobile
+# Pocketwatch
 
 A phone and tablet client for YouTube, forked from
 [yuliskov/SmartTube](https://github.com/yuliskov/SmartTube).
@@ -60,8 +60,8 @@ Other sections work signed out.
 No releases are published. Build from source:
 
 ```bash
-git clone --recursive git@github.com:alkevintan/SmartTubeMobile.git
-cd SmartTubeMobile
+git clone --recursive git@github.com:alkevintan/Pocketwatch.git
+cd Pocketwatch
 chmod +x gradlew
 ./gradlew :smarttubetv:assembleStfdroidDebug
 ```
@@ -83,9 +83,9 @@ device ABI (`arm64-v8a` for most phones).
 
 | Flavor | applicationId |
 | --- | --- |
-| `ststable` | `io.github.alkevintan.smarttubemobile` |
-| `stbeta` | `io.github.alkevintan.smarttubemobile.beta` |
-| `stfdroid` | `io.github.alkevintan.smarttubemobile.fdroid` |
+| `ststable` | `io.github.alkevintan.pocketwatch` |
+| `stbeta` | `io.github.alkevintan.pocketwatch.beta` |
+| `stfdroid` | `io.github.alkevintan.pocketwatch.fdroid` |
 
 The applicationId differs from upstream's, so this installs **alongside** SmartTube rather than
 replacing it. The Java package namespace is deliberately left as upstream's to keep merges

@@ -62,7 +62,7 @@ android {
     
     defaultConfig {
         // values linked with applicationId: searchable.searchSuggestAuthority, searchable.searchSuggestIntentData, VideoContract.CONTENT_AUTHORITY
-        applicationId "io.github.alkevintan.smarttubemobile"
+        applicationId "io.github.alkevintan.pocketwatch"
         minSdkVersion project.properties.minSdkVersion
         targetSdkVersion project.properties.targetSdkVersion
         versionCode 1
@@ -131,7 +131,7 @@ android {
     // https://stackoverflow.com/questions/18332474/how-to-set-versionname-in-apk-filename-using-gradle
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            def project = "SmartTubeMobile"
+            def project = "Pocketwatch"
             def flavor = variant.productFlavors[-1].name.substring(2) // remove st prefix
             def buildType = variant.buildType.name.take(1)
             def version = variant.versionName
@@ -168,15 +168,15 @@ android {
     // NOTE: The main goal of prefixing a flavor is to group flavors' folders together
     productFlavors {
         stbeta {
-            applicationId "io.github.alkevintan.smarttubemobile.beta"
+            applicationId "io.github.alkevintan.pocketwatch.beta"
             targetSdkVersion project.properties.compileSdkVersion
         }
         ststable {
-            applicationId "io.github.alkevintan.smarttubemobile"
+            applicationId "io.github.alkevintan.pocketwatch"
             targetSdkVersion project.properties.compileSdkVersion
         }
         stfdroid {
-            applicationId "io.github.alkevintan.smarttubemobile.fdroid"
+            applicationId "io.github.alkevintan.pocketwatch.fdroid"
             minSdkVersion 21
             targetSdkVersion project.properties.compileSdkVersion
         }

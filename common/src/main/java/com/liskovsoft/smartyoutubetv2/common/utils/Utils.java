@@ -116,9 +116,9 @@ public class Utils {
             "org.smarttube.stable",
             "app.smarttube.fdroid",
             // This fork. Upstream ids are kept above so an upstream backup can still be imported.
-            "io.github.alkevintan.smarttubemobile",
-            "io.github.alkevintan.smarttubemobile.beta",
-            "io.github.alkevintan.smarttubemobile.fdroid",
+            "io.github.alkevintan.pocketwatch",
+            "io.github.alkevintan.pocketwatch.beta",
+            "io.github.alkevintan.pocketwatch.fdroid",
     };
     public static final String[] BACKUP_PREFS = {
             "yt_service_prefs.xml",

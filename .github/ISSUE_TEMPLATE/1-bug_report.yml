@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping to improve SmartTube Mobile by reporting a bug.
+        Thank you for helping to improve Pocketwatch by reporting a bug.
 
         If the problem is with playback, data loading or settings rather than the phone/tablet
         interface, it is probably an upstream SmartTube bug - please report it there instead.
@@ -19,9 +19,9 @@ body:
     attributes:
       label: "Checklist"
       options:
-        - label: "I made sure that there are *no existing issues* - [open](https://github.com/alkevintan/SmartTubeMobile/issues) or [closed](https://github.com/alkevintan/SmartTubeMobile/issues?q=is%3Aissue+is%3Aclosed) - which I could contribute my information to."
+        - label: "I made sure that there are *no existing issues* - [open](https://github.com/alkevintan/Pocketwatch/issues) or [closed](https://github.com/alkevintan/Pocketwatch/issues?q=is%3Aissue+is%3Aclosed) - which I could contribute my information to."
           required: true
-        - label: "I have read the [README](https://github.com/alkevintan/SmartTubeMobile#status) and my problem is not a known gap."
+        - label: "I have read the [README](https://github.com/alkevintan/Pocketwatch#status) and my problem is not a known gap."
           required: true
         - label: "I have taken the time to fill in all the required details. I understand that the bug report will be dismissed otherwise."
           required: true
@@ -32,7 +32,7 @@ body:
     id: app-version
     attributes:
      label: Affected version
-     description: "In which SmartTube Mobile version did you encounter the bug?"
+     description: "In which Pocketwatch version did you encounter the bug?"
      placeholder: "x.xx.x - Can be seen in the app from the 'About' section in Settings"
     validations:
       required: true
