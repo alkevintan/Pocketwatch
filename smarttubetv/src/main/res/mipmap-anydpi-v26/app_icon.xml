@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Adaptive launcher icon. The legacy mipmap-nodpi/app_icon.png remains the fallback below API 26. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/app_icon_background" />
+    <foreground android:drawable="@mipmap/app_icon_foreground" />
+    <monochrome android:drawable="@mipmap/app_icon_monochrome" />
+</adaptive-icon>

@@ -37,7 +37,7 @@ import com.r0adkll.slidr.model.SlidrPosition;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MotherActivity extends FragmentActivity {
+public class MotherActivity extends FragmentActivity implements ActivityCallbacks {
     private static final String TAG = MotherActivity.class.getSimpleName();
     private static final float DEFAULT_DENSITY = 2.0f; // xhdpi
     private static final float DEFAULT_WIDTH = 1920f; // xhdpi
@@ -45,20 +45,12 @@ public class MotherActivity extends FragmentActivity {
     protected static boolean sIsInPipMode;
     private ScreensaverManager mScreensaverManager;
     // Make static in case Don't keep activities enabled in Developer settings
-    private static List<OnPermissions> mOnPermissions;
-    private static List<OnResult> mOnResults;
+    private static List<ActivityCallbacks.OnPermissions> mOnPermissions;
+    private static List<ActivityCallbacks.OnResult> mOnResults;
     private long mLastKeyDownTime;
     private boolean mEnableThrottleKeyDown;
     private boolean mIsOculusQuestFixEnabled;
     private boolean mIsFullscreenModeEnabled;
-
-    public interface OnPermissions {
-        void onPermissions(int requestCode, String[] permissions, int[] grantResults);
-    }
-
-    public interface OnResult {
-        void onResult(int requestCode, int resultCode, Intent data);
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -169,6 +161,7 @@ public class MotherActivity extends FragmentActivity {
         return KeyHelpers.isMenuKey(keyCode) || throttleKeyDown(keyCode) || result;
     }
 
+    @Override
     public void finishReally() {
         try {
             //if (VERSION.SDK_INT >= 21 && getViewManager().getTopView() != null) { // remain root activity in recents
@@ -237,6 +230,7 @@ public class MotherActivity extends FragmentActivity {
         applyCustomConfig();
     }
 
+    @Override
     public ScreensaverManager getScreensaverManager() {
         return mScreensaverManager;
     }
@@ -297,7 +291,7 @@ public class MotherActivity extends FragmentActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (mOnPermissions != null) {
-            for (OnPermissions callback : mOnPermissions) {
+            for (ActivityCallbacks.OnPermissions callback : mOnPermissions) {
                 callback.onPermissions(requestCode, permissions, grantResults);
             }
             mOnPermissions.clear();
@@ -310,7 +304,7 @@ public class MotherActivity extends FragmentActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (mOnResults != null) {
-            for (OnResult callback : mOnResults) {
+            for (ActivityCallbacks.OnResult callback : mOnResults) {
                 callback.onResult(requestCode, resultCode, data);
             }
             mOnResults.clear();
@@ -327,7 +321,8 @@ public class MotherActivity extends FragmentActivity {
         }
     }
 
-    public void addOnPermissions(OnPermissions onPermissions) {
+    @Override
+    public void addOnPermissions(ActivityCallbacks.OnPermissions onPermissions) {
         if (mOnPermissions == null) {
             mOnPermissions = new ArrayList<>();
         }
@@ -336,7 +331,8 @@ public class MotherActivity extends FragmentActivity {
         mOnPermissions.add(onPermissions);
     }
 
-    public void addOnResult(OnResult onResult) {
+    @Override
+    public void addOnResult(ActivityCallbacks.OnResult onResult) {
         if (mOnResults == null) {
             mOnResults = new ArrayList<>();
         }

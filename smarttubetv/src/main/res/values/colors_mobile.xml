@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light palette. The dark counterparts live in values-night/colors_mobile.xml. -->
+    <color name="mobile_primary">#FFCC0000</color>
+    <color name="mobile_primary_variant">#FF990000</color>
+    <color name="mobile_on_primary">#FFFFFFFF</color>
+    <color name="mobile_background">#FFFFFFFF</color>
+    <color name="mobile_surface">#FFFFFFFF</color>
+    <color name="mobile_on_surface">#FF0F0F0F</color>
+    <color name="mobile_on_surface_secondary">#FF606060</color>
+    <color name="mobile_divider">#1F000000</color>
+    <color name="mobile_placeholder">#FFE5E5E5</color>
+    <color name="mobile_scrim">#99000000</color>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Launcher icon backdrop. Kept light so the red mark holds contrast under any launcher mask. -->
+    <color name="app_icon_background">#FFFFFFFF</color>
+</resources>

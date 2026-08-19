@@ -17,11 +17,11 @@ import com.liskovsoft.smartyoutubetv2.common.app.models.playback.ui.OptionItem;
 import com.liskovsoft.smartyoutubetv2.common.app.models.playback.ui.UiOptionItem;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.AppDialogPresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.base.BasePresenter;
-import com.liskovsoft.smartyoutubetv2.common.misc.MotherActivity;
+import com.liskovsoft.smartyoutubetv2.common.misc.ActivityCallbacks;
 import com.liskovsoft.smartyoutubetv2.common.prefs.GeneralData;
 import com.liskovsoft.smartyoutubetv2.common.utils.LoadingManager;
 
-abstract class BridgePresenter extends BasePresenter<Void> implements MotherActivity.OnResult {
+abstract class BridgePresenter extends BasePresenter<Void> implements ActivityCallbacks.OnResult {
     private static final String TAG = BridgePresenter.class.getSimpleName();
     private final GeneralData mGeneralData;
     private boolean mRemoveOldApkFirst;
@@ -136,8 +136,8 @@ abstract class BridgePresenter extends BasePresenter<Void> implements MotherActi
         LoadingManager.showLoading(getContext(), false);
 
         if (mRemoveOldApkFirst) {
-            if (getContext() instanceof MotherActivity) {
-                ((MotherActivity) getContext()).addOnResult(this);
+            if (getContext() instanceof ActivityCallbacks) {
+                ((ActivityCallbacks) getContext()).addOnResult(this);
 
                 Helpers.removePackageAndGetResult((Activity) getContext(), getPackageName());
             }

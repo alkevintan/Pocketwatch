@@ -28,7 +28,7 @@ import com.liskovsoft.smartyoutubetv2.common.app.views.PlaybackView;
 import com.liskovsoft.smartyoutubetv2.common.app.views.SearchView;
 import com.liskovsoft.smartyoutubetv2.common.app.views.ViewManager;
 import com.liskovsoft.smartyoutubetv2.common.misc.MediaServiceManager;
-import com.liskovsoft.smartyoutubetv2.common.misc.MotherActivity;
+import com.liskovsoft.smartyoutubetv2.common.misc.ActivityCallbacks;
 import com.liskovsoft.smartyoutubetv2.common.misc.ScreensaverManager;
 import com.liskovsoft.smartyoutubetv2.common.misc.TickleManager;
 import com.liskovsoft.smartyoutubetv2.common.prefs.GeneralData;
@@ -320,8 +320,8 @@ public abstract class BasePresenter<T> implements Presenter<T> {
 
     protected ScreensaverManager getScreensaverManager() {
         Context context = getContext();
-        if (context instanceof MotherActivity) {
-            return ((MotherActivity) context).getScreensaverManager();
+        if (context instanceof ActivityCallbacks) {
+            return ((ActivityCallbacks) context).getScreensaverManager();
         }
 
         return null;

@@ -39,7 +39,6 @@ SmartTube is a free and open-source media client for Android TVs and TV boxes. I
 - Helpful international community
 
 ### ❌ Limitations
-- Not supported on phones and tablets  
 - Comment functionality is unstable  
 - Voice search and casting performance may be inferior to official apps, depending on your device  
 
@@ -56,7 +55,15 @@ Give it a try!
 
 ![Device support image](images/new/compatibility.png)
 * **Supported:** all Android TVs and TV boxes (incl. All FireTV devices released before Oct. 2025, NVIDIA Shield & Chromecast with Google TV), even older ones with Android 4.3 (Kitkat).
-* **Not supported:** Smartphones, non-Android platforms like Samsung Tizen, LG webOS, Apple TV, etc.
+* **Not supported:** non-Android platforms like Samsung Tizen, LG webOS, Apple TV, etc.
+
+> [!NOTE]
+> **This is a fork of [yuliskov/SmartTube](https://github.com/yuliskov/SmartTube)**, replacing the
+> leanback (10-foot) interface with a touch-first phone and tablet UI. The presenter layer is
+> shared with upstream; only the view layer differs. Original work is MIT licensed,
+> Copyright (c) 2020-present yuliskov — see [LICENSE](LICENSE).
+>
+> It installs alongside upstream SmartTube: application id `io.github.alkevintan.smarttubemobile`.
 
 ## Installation
 

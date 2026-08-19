@@ -39,7 +39,7 @@ import com.liskovsoft.smartyoutubetv2.common.exoplayer.selector.FormatItem;
 import com.liskovsoft.smartyoutubetv2.common.exoplayer.selector.FormatItem.VideoPreset;
 import com.liskovsoft.smartyoutubetv2.common.misc.AppDataSourceManager;
 import com.liskovsoft.smartyoutubetv2.common.misc.MediaServiceManager;
-import com.liskovsoft.smartyoutubetv2.common.misc.MotherActivity;
+import com.liskovsoft.smartyoutubetv2.common.misc.ActivityCallbacks;
 import com.liskovsoft.smartyoutubetv2.common.prefs.SponsorBlockData;
 import com.liskovsoft.smartyoutubetv2.common.prefs.GeneralData;
 import com.liskovsoft.smartyoutubetv2.common.prefs.PlayerData;
@@ -951,12 +951,12 @@ public class AppDialogUtil {
         OptionItem item = UiOptionItem.from(filePickerTitle, optionItem -> {
             dialogPresenter.closeDialog();
 
-            MotherActivity activity = getMotherActivity(context);
+            Activity activity = getFilePickerActivity(context);
 
             if (PermissionHelpers.hasStoragePermissions(activity)) {
                 runFilePicker(activity, filePickerTitle);
             } else {
-                activity.addOnPermissions((requestCode, permissions, grantResults) -> {
+                ((ActivityCallbacks) activity).addOnPermissions((requestCode, permissions, grantResults) -> {
                     if (requestCode == PermissionHelpers.REQUEST_EXTERNAL_STORAGE) {
                         if (grantResults.length >= 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                             runFilePicker(activity, filePickerTitle);
@@ -986,10 +986,10 @@ public class AppDialogUtil {
     }
 
     @NonNull
-    private static MotherActivity getMotherActivity(Context context) {
+    private static Activity getFilePickerActivity(Context context) {
         ChannelGroupServiceWrapper mService = ChannelGroupServiceWrapper.instance(context);
-        MotherActivity activity = (MotherActivity) context;
-        activity.addOnResult((requestCode, resultCode, data) -> {
+        Activity activity = (Activity) context;
+        ((ActivityCallbacks) activity).addOnResult((requestCode, resultCode, data) -> {
             if (FILE_PICKER_REQUEST_CODE == requestCode && resultCode == Activity.RESULT_OK) {
                 String filePath = data.getStringExtra(FilePickerActivity.RESULT_FILE_PATH);
                 RxHelper.execute(mService.importGroupsObserve(new File(filePath)), result -> pinGroups(context, result),

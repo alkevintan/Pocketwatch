@@ -81,7 +81,7 @@ import com.liskovsoft.smartyoutubetv2.common.app.views.ViewManager;
 import com.liskovsoft.smartyoutubetv2.common.exoplayer.selector.FormatItem.VideoPreset;
 import com.liskovsoft.smartyoutubetv2.common.exoplayer.selector.TrackSelectorUtil;
 import com.liskovsoft.smartyoutubetv2.common.exoplayer.selector.track.MediaTrack;
-import com.liskovsoft.smartyoutubetv2.common.misc.MotherActivity;
+import com.liskovsoft.smartyoutubetv2.common.misc.ActivityCallbacks;
 import com.liskovsoft.smartyoutubetv2.common.misc.RemoteControlService;
 import com.liskovsoft.smartyoutubetv2.common.misc.RemoteControlWorker;
 import com.liskovsoft.smartyoutubetv2.common.misc.ScreensaverManager;
@@ -115,6 +115,10 @@ public class Utils {
             "org.smarttube.beta",
             "org.smarttube.stable",
             "app.smarttube.fdroid",
+            // This fork. Upstream ids are kept above so an upstream backup can still be imported.
+            "io.github.alkevintan.smarttubemobile",
+            "io.github.alkevintan.smarttubemobile.beta",
+            "io.github.alkevintan.smarttubemobile.fdroid",
     };
     public static final String[] BACKUP_PREFS = {
             "yt_service_prefs.xml",
@@ -861,8 +865,8 @@ public class Utils {
     }
 
     public static void enableScreensaver(Context activity, boolean enable) {
-        if (activity instanceof MotherActivity) {
-            ScreensaverManager screensaver = ((MotherActivity) activity).getScreensaverManager();
+        if (activity instanceof ActivityCallbacks) {
+            ScreensaverManager screensaver = ((ActivityCallbacks) activity).getScreensaverManager();
             if (enable) {
                 screensaver.enable();
             } else {
@@ -872,8 +876,8 @@ public class Utils {
     }
 
     public static boolean isScreenOff(Context activity) {
-        if (activity instanceof MotherActivity) {
-            ScreensaverManager manager = ((MotherActivity) activity).getScreensaverManager();
+        if (activity instanceof ActivityCallbacks) {
+            ScreensaverManager manager = ((ActivityCallbacks) activity).getScreensaverManager();
 
             return manager != null && manager.isScreenOff();
         }
@@ -1044,8 +1048,8 @@ public class Utils {
         Intent intent = new Intent(context, rootActivity);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
-        if (context instanceof MotherActivity) {
-            ((MotherActivity) context).finishReally();
+        if (context instanceof ActivityCallbacks) {
+            ((ActivityCallbacks) context).finishReally();
         }
         Runtime.getRuntime().exit(0);
     }

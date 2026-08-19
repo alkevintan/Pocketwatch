@@ -1,5 +1,13 @@
 apply from: gradle.ext.sharedModulesConstants
 
+// Dependency versions for the phone/tablet UI. Deliberately declared here rather than in
+// SharedModules/constants.gradle: that is an upstream submodule this fork cannot push to, so
+// anything added there would disappear on a fresh clone and break the build.
+ext {
+    viewpager2XVersion = '1.0.0'   // latest compatible with recyclerview 1.1.0
+    swipeRefreshXVersion = '1.1.0'
+}
+
 buildscript {
     repositories {
         google()
@@ -54,11 +62,11 @@ android {
     
     defaultConfig {
         // values linked with applicationId: searchable.searchSuggestAuthority, searchable.searchSuggestIntentData, VideoContract.CONTENT_AUTHORITY
-        applicationId "app.smarttube"
+        applicationId "io.github.alkevintan.smarttubemobile"
         minSdkVersion project.properties.minSdkVersion
         targetSdkVersion project.properties.targetSdkVersion
-        versionCode 2411
-        versionName "32.21"
+        versionCode 1
+        versionName "0.1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "long", "TIMESTAMP", System.currentTimeMillis() + "L"
 
@@ -123,7 +131,7 @@ android {
     // https://stackoverflow.com/questions/18332474/how-to-set-versionname-in-apk-filename-using-gradle
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            def project = "SmartTube"
+            def project = "SmartTubeMobile"
             def flavor = variant.productFlavors[-1].name.substring(2) // remove st prefix
             def buildType = variant.buildType.name.take(1)
             def version = variant.versionName
@@ -160,15 +168,15 @@ android {
     // NOTE: The main goal of prefixing a flavor is to group flavors' folders together
     productFlavors {
         stbeta {
-            applicationId "org.smarttube.beta"
+            applicationId "io.github.alkevintan.smarttubemobile.beta"
             targetSdkVersion project.properties.compileSdkVersion
         }
         ststable {
-            applicationId "org.smarttube.stable"
+            applicationId "io.github.alkevintan.smarttubemobile"
             targetSdkVersion project.properties.compileSdkVersion
         }
         stfdroid {
-            applicationId "app.smarttube.fdroid"
+            applicationId "io.github.alkevintan.smarttubemobile.fdroid"
             minSdkVersion 21
             targetSdkVersion project.properties.compileSdkVersion
         }
@@ -185,6 +193,13 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:' + recyclerviewXVersion // exoplayer 2.12.1 fix
     implementation 'androidx.media:media:' + mediaXVersion // exoplayer fix
     implementation 'androidx.constraintlayout:constraintlayout:' + constraintLayoutXVersion
+
+    //////// BEGIN MOBILE (phone/tablet) UI /////////
+    implementation 'com.google.android.material:material:' + materialVersion
+    implementation 'androidx.viewpager2:viewpager2:' + viewpager2XVersion
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:' + swipeRefreshXVersion
+    implementation 'androidx.preference:preference:' + preferenceXVersion
+    //////// END MOBILE UI //////////
 
     implementation 'com.github.bumptech.glide:glide:' + glideVersion
     implementation 'com.github.bumptech.glide:annotations:' + glideVersion
@@ -233,13 +248,17 @@ dependencies {
 
     // Add the Firebase Crashlytics SDK.
 
-    stbetaImplementation('com.google.firebase:firebase-crashlytics:' + firebaseCrashlyticsVersion) {
-        transitive = true
-    }
+    // Crashlytics is disabled in this fork: upstream's google-services.json is tied to upstream's
+    // Firebase project and its applicationIds, so it cannot work here. To re-enable, create your
+    // own Firebase project, drop its google-services.json into this module (the plugin block above
+    // switches itself back on when the file exists) and uncomment these.
+    //stbetaImplementation('com.google.firebase:firebase-crashlytics:' + firebaseCrashlyticsVersion) {
+    //    transitive = true
+    //}
 
-    ststableImplementation('com.google.firebase:firebase-crashlytics:' + firebaseCrashlyticsVersion) {
-        transitive = true
-    }
+    //ststableImplementation('com.google.firebase:firebase-crashlytics:' + firebaseCrashlyticsVersion) {
+    //    transitive = true
+    //}
 
     // debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.14'
 

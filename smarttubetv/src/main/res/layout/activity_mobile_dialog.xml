@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_scrim"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/mobile_scrim">
+
+    <!-- Tapping above the sheet dismisses it, matching the usual bottom-sheet gesture. -->
+    <View
+        android:id="@+id/dialog_outside"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/mobile_dialog_dismiss" />
+
+    <LinearLayout
+        android:id="@+id/dialog_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/mobile_sheet_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="4dp"
+            android:paddingEnd="16dp">
+
+            <ImageButton
+                android:id="@+id/dialog_back"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/mobile_ic_arrow_back"
+                android:contentDescription="@string/mobile_dialog_back"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/dialog_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="0dp"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/mobile_on_surface" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/mobile_divider" />
+
+        <TextView
+            android:id="@+id/dialog_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24dp"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/mobile_on_surface_secondary"
+            android:accessibilityLiveRegion="polite"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dialog_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+</LinearLayout>

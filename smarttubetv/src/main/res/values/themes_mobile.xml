@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Phone/tablet theme. DayNight so the app follows the system light/dark setting. -->
+    <style name="App.Theme.Mobile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/mobile_primary</item>
+        <item name="colorPrimaryVariant">@color/mobile_primary_variant</item>
+        <item name="colorOnPrimary">@color/mobile_on_primary</item>
+        <item name="colorSecondary">@color/mobile_primary</item>
+        <item name="colorOnSecondary">@color/mobile_on_primary</item>
+        <item name="android:colorBackground">@color/mobile_background</item>
+        <item name="colorSurface">@color/mobile_surface</item>
+        <item name="colorOnSurface">@color/mobile_on_surface</item>
+        <item name="android:windowBackground">@color/mobile_background</item>
+        <item name="android:statusBarColor" tools:targetApi="21">@color/mobile_surface</item>
+        <item name="android:navigationBarColor" tools:targetApi="21">@color/mobile_surface</item>
+    </style>
+
+    <style name="App.Theme.Mobile.Splash">
+        <item name="android:windowBackground">@color/mobile_background</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Fullscreen, dark, no system bars: the video player. -->
+    <style name="App.Theme.Mobile.Player" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/black</item>
+        <item name="android:statusBarColor" tools:targetApi="21">@android:color/black</item>
+        <item name="android:navigationBarColor" tools:targetApi="21">@android:color/black</item>
+    </style>
+
+    <!-- Settings / options presented as a bottom sheet. -->
+    <style name="App.Theme.Mobile.Dialog" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- Text styles. All sizes in sp so they honour the user's font-size setting. -->
+    <style name="App.Text.CardTitle" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/mobile_on_surface</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="App.Text.CardSubtitle" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/mobile_on_surface_secondary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="App.Text.SectionHeader" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/mobile_on_surface</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

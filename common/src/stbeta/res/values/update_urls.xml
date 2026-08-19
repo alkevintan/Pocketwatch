@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="update_urls">
-        <item>https://github.com/yuliskov/SmartTubeNext/releases/download/latest/smarttube_beta2.json</item>
-    </string-array>
+    <!-- Intentionally empty. This fork has no release feed yet, and pointing the updater at
+         upstream would offer their APK (different signature and applicationId) as an update.
+         Add this fork's own manifest URL here when releases start. -->
+    <string-array name="update_urls" />
 </resources>

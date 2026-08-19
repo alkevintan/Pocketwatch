@@ -215,6 +215,21 @@ public class PlaybackPresenter extends BasePresenter<PlaybackView> implements Pl
     }
 
     @SuppressWarnings("unchecked")
+    /**
+     * Registers an extra controller, e.g. one supplied by the UI layer that needs player events
+     * such as metadata. The listener must extend BasePlayerController - see the add() override
+     * above, which wires the main controller into it.
+     */
+    public void addEventListener(PlayerEventListener listener) {
+        if (listener != null && !mEventListeners.contains(listener)) {
+            mEventListeners.add(listener);
+        }
+    }
+
+    public void removeEventListener(PlayerEventListener listener) {
+        mEventListeners.remove(listener);
+    }
+
     public <T extends PlayerEventListener> T getController(Class<T> clazz) {
         for (PlayerEventListener listener : mEventListeners) {
             if (clazz.isInstance(listener)) {

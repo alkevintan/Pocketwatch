@@ -25,7 +25,7 @@ import java.util.List;
 
 import io.reactivex.disposables.Disposable;
 
-public class BackupAndRestoreManager implements MotherActivity.OnPermissions {
+public class BackupAndRestoreManager implements ActivityCallbacks.OnPermissions {
     private static final String TAG = BackupAndRestoreManager.class.getSimpleName();
     private static final String BACKUP_DIR_NAME = "Backup";
     private final Context mContext;
@@ -248,8 +248,8 @@ public class BackupAndRestoreManager implements MotherActivity.OnPermissions {
     }
 
     private void verifyStoragePermissionsAndReturn() {
-        if (mContext instanceof MotherActivity) {
-            ((MotherActivity) mContext).addOnPermissions(this);
+        if (mContext instanceof ActivityCallbacks) {
+            ((ActivityCallbacks) mContext).addOnPermissions(this);
 
             PermissionHelpers.verifyStoragePermissions(mContext);
         }

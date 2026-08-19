@@ -24,7 +24,7 @@ import com.liskovsoft.smartyoutubetv2.common.app.views.PlaybackView;
 import com.liskovsoft.smartyoutubetv2.common.app.views.ViewManager;
 import com.liskovsoft.smartyoutubetv2.common.exoplayer.selector.FormatItem;
 import com.liskovsoft.smartyoutubetv2.common.misc.MediaServiceManager;
-import com.liskovsoft.smartyoutubetv2.common.misc.MotherActivity;
+import com.liskovsoft.smartyoutubetv2.common.misc.ActivityCallbacks;
 import com.liskovsoft.smartyoutubetv2.common.misc.ScreensaverManager;
 import com.liskovsoft.smartyoutubetv2.common.prefs.SponsorBlockData;
 import com.liskovsoft.smartyoutubetv2.common.prefs.GeneralData;
@@ -364,8 +364,8 @@ public abstract class BasePlayerController implements PlayerEventListener {
 
     protected ScreensaverManager getScreensaverManager() {
         Activity activity = getActivity();
-        if (activity instanceof MotherActivity) {
-            return ((MotherActivity) activity).getScreensaverManager();
+        if (activity instanceof ActivityCallbacks) {
+            return ((ActivityCallbacks) activity).getScreensaverManager();
         }
 
         return null;

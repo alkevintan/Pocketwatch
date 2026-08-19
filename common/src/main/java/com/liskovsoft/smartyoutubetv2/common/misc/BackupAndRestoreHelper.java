@@ -15,7 +15,7 @@ import com.liskovsoft.sharedutils.helpers.MessageHelpers;
 import com.liskovsoft.smartyoutubetv2.common.R;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.settings.BackupSettingsPresenter;
 import com.liskovsoft.smartyoutubetv2.common.misc.MediaServiceManager.OnError;
-import com.liskovsoft.smartyoutubetv2.common.misc.MotherActivity.OnResult;
+import com.liskovsoft.smartyoutubetv2.common.misc.ActivityCallbacks.OnResult;
 import com.liskovsoft.smartyoutubetv2.common.prefs.GeneralData;
 
 import java.io.File;
@@ -129,7 +129,7 @@ public class BackupAndRestoreHelper implements OnResult {
         //        "application/x-zip-compressed"
         //});
 
-        ((MotherActivity) mContext).addOnResult(this);
+        ((ActivityCallbacks) mContext).addOnResult(this);
 
         ((Activity) mContext).startActivityForResult(intent, REQ_PICK_FILES);
     }

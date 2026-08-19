@@ -12,7 +12,7 @@ import com.liskovsoft.smartyoutubetv2.common.app.models.playback.ui.UiOptionItem
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.AddDevicePresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.AppDialogPresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.base.BasePresenter;
-import com.liskovsoft.smartyoutubetv2.common.misc.MotherActivity;
+import com.liskovsoft.smartyoutubetv2.common.misc.ActivityCallbacks;
 import com.liskovsoft.smartyoutubetv2.common.prefs.RemoteControlData;
 import com.liskovsoft.sharedutils.rx.RxHelper;
 import com.liskovsoft.smartyoutubetv2.common.utils.AppDialogUtil;
@@ -94,8 +94,8 @@ public class RemoteControlSettingsPresenter extends BasePresenter<Void> {
                                 getContext(), getContext().getString(R.string.remote_control_permission), () -> {
                                     PermissionHelpers.verifyOverlayPermissions(getContext());
                                     // Service that prevents the app from destroying
-                                    if (getContext() instanceof MotherActivity) {
-                                        ((MotherActivity) getContext()).addOnResult(
+                                    if (getContext() instanceof ActivityCallbacks) {
+                                        ((ActivityCallbacks) getContext()).addOnResult(
                                                 (request, response, data) -> AddDevicePresenter.instance(getContext()).start()
                                         );
                                     }

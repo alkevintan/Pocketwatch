@@ -26,6 +26,7 @@ import com.liskovsoft.smartyoutubetv2.common.app.presenters.SearchPresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.SplashPresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.base.BasePresenter;
 import com.liskovsoft.smartyoutubetv2.common.app.presenters.dialogs.AppUpdatePresenter;
+import com.liskovsoft.smartyoutubetv2.common.misc.ActivityCallbacks;
 import com.liskovsoft.smartyoutubetv2.common.misc.MotherActivity;
 import com.liskovsoft.smartyoutubetv2.common.utils.Utils;
 import com.liskovsoft.youtubeapi.service.YouTubeServiceManager;
@@ -215,7 +216,7 @@ public class ViewManager {
             // Maybe finish whole app?
             // Move task to back is active.
             // So finishing the activity only.
-            //((MotherActivity) activity).finishReally();
+            //((ActivityCallbacks) activity).finishReally();
             return;
         }
 
@@ -313,14 +314,14 @@ public class ViewManager {
      * @param activity this activity
      */
     public void properlyFinishTheApp(Context activity) {
-        if (activity instanceof MotherActivity) {
+        if (activity instanceof ActivityCallbacks) {
             Log.d(TAG, "Trying finish the app...");
             mIsMoveToBackEnabled = true; // close all activities below current one
             mIsFinished = true;
 
             mActivityStack.clear();
 
-            ((MotherActivity) activity).finishReally();
+            ((ActivityCallbacks) activity).finishReally();
 
             PlaybackPresenter.instance(activity).forceFinish();
 
@@ -456,18 +457,18 @@ public class ViewManager {
         return presenter != null && isVisible(presenter.getView());
     }
 
-    public static MotherActivity getMotherActivity(Object view) {
-        MotherActivity motherActivity = null;
+    public static ActivityCallbacks getActivityCallbacks(Object view) {
+        ActivityCallbacks callbacks = null;
 
-        if (view instanceof Fragment && ((Fragment) view).getActivity() instanceof MotherActivity) {
-            motherActivity = ((MotherActivity) ((Fragment) view).getActivity());
+        if (view instanceof Fragment && ((Fragment) view).getActivity() instanceof ActivityCallbacks) {
+            callbacks = ((ActivityCallbacks) ((Fragment) view).getActivity());
         }
 
-        if (view instanceof androidx.fragment.app.Fragment && ((androidx.fragment.app.Fragment) view).getActivity() instanceof MotherActivity) {
-            motherActivity = ((MotherActivity) ((androidx.fragment.app.Fragment) view).getActivity());
+        if (view instanceof androidx.fragment.app.Fragment && ((androidx.fragment.app.Fragment) view).getActivity() instanceof ActivityCallbacks) {
+            callbacks = ((ActivityCallbacks) ((androidx.fragment.app.Fragment) view).getActivity());
         }
 
-        return motherActivity;
+        return callbacks;
     }
 
     public boolean isPlayerInForeground() {

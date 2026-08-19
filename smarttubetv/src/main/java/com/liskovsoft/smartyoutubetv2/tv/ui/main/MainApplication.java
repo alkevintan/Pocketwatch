@@ -23,6 +23,16 @@ import com.liskovsoft.smartyoutubetv2.common.prefs.NetworkData;
 import com.liskovsoft.smartyoutubetv2.common.prefs.PlayerData;
 import com.liskovsoft.smartyoutubetv2.common.prefs.PlayerTweaksData;
 import com.liskovsoft.smartyoutubetv2.tv.ui.adddevice.AddDeviceActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.browse.MobileBrowseActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.dialogs.MobileDialogActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.adddevice.MobileAddDeviceActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.channel.MobileChannelActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.channel.MobileChannelUploadsActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.playback.MobilePlaybackActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.signin.MobileSignInActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.webbrowser.MobileWebBrowserActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.search.MobileSearchActivity;
+import com.liskovsoft.smartyoutubetv2.mobile.ui.main.MobileSplashActivity;
 import com.liskovsoft.smartyoutubetv2.tv.ui.browse.BrowseActivity;
 import com.liskovsoft.smartyoutubetv2.tv.ui.channel.ChannelActivity;
 import com.liskovsoft.smartyoutubetv2.tv.ui.channeluploads.ChannelUploadsActivity;
@@ -88,27 +98,19 @@ public class MainApplication extends MultiDexApplication { // fix: Didn't find c
     private void setupViewManager() {
         ViewManager viewManager = ViewManager.instance(this);
 
-        Class<? extends AppDialogActivity> dialogClazz;
-
-        if (VERSION.SDK_INT == 26
-                && Helpers.equalsAny(Helpers.getCrashlyticsDeviceName(), "4S806_Z51S1 (Panasonic)")) {
-            // The fix: Only fullscreen opaque activities can request orientation
-            dialogClazz = AppDialogActivityOpaque.class;
-        } else {
-            dialogClazz = AppDialogActivity.class;
-        }
-
-        viewManager.setRoot(BrowseActivity.class);
-        viewManager.register(SplashView.class, SplashActivity.class); // no parent, because it's root activity
-        viewManager.register(BrowseView.class, BrowseActivity.class); // no parent, because it's root activity
-        viewManager.register(PlaybackView.class, PlaybackActivity.class, BrowseActivity.class);
-        viewManager.register(AppDialogView.class, dialogClazz, BrowseActivity.class);
-        viewManager.register(SearchView.class, SearchTagsActivity.class, BrowseActivity.class);
-        viewManager.register(SignInView.class, SignInActivity.class, BrowseActivity.class);
-        viewManager.register(AddDeviceView.class, AddDeviceActivity.class, BrowseActivity.class);
-        viewManager.register(ChannelView.class, ChannelActivity.class, BrowseActivity.class);
-        viewManager.register(ChannelUploadsView.class, ChannelUploadsActivity.class, BrowseActivity.class);
-        viewManager.register(WebBrowserView.class, WebBrowserActivity.class, BrowseActivity.class);
+        // Phone/tablet UI. Every view interface maps to a touch-first activity; the leanback
+        // activities remain in the tree but are no longer reachable through the ViewManager.
+        viewManager.setRoot(MobileBrowseActivity.class);
+        viewManager.register(SplashView.class, MobileSplashActivity.class); // no parent, because it's root activity
+        viewManager.register(BrowseView.class, MobileBrowseActivity.class); // no parent, because it's root activity
+        viewManager.register(PlaybackView.class, MobilePlaybackActivity.class, MobileBrowseActivity.class);
+        viewManager.register(AppDialogView.class, MobileDialogActivity.class, MobileBrowseActivity.class);
+        viewManager.register(SearchView.class, MobileSearchActivity.class, MobileBrowseActivity.class);
+        viewManager.register(SignInView.class, MobileSignInActivity.class, MobileBrowseActivity.class);
+        viewManager.register(AddDeviceView.class, MobileAddDeviceActivity.class, MobileBrowseActivity.class);
+        viewManager.register(ChannelView.class, MobileChannelActivity.class, MobileBrowseActivity.class);
+        viewManager.register(ChannelUploadsView.class, MobileChannelUploadsActivity.class, MobileBrowseActivity.class);
+        viewManager.register(WebBrowserView.class, MobileWebBrowserActivity.class, MobileBrowseActivity.class);
     }
 
     private void setupGlobalExceptionHandler() {
