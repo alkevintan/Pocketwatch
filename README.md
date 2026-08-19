@@ -1,7 +1,14 @@
+<div align="center">
+
+<img src="images/icon.png" width="112" alt="Pocketwatch icon">
+
 # Pocketwatch
 
-A phone and tablet client for YouTube, forked from
-[yuliskov/SmartTube](https://github.com/yuliskov/SmartTube).
+**A phone and tablet client for YouTube**
+
+Forked from [yuliskov/SmartTube](https://github.com/yuliskov/SmartTube)
+
+</div>
 
 Upstream SmartTube is built exclusively for Android TV — its interface is Leanback, designed for a
 remote control and a 10-foot viewing distance, and it explicitly does not support phones. This fork
