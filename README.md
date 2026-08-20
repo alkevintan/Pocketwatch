@@ -16,9 +16,10 @@ replaces that interface with a touch-first one while reusing upstream's entire p
 playback layer unchanged.
 
 > [!WARNING]
-> **Early and unreleased.** Version 0.1.0. It runs, plays video and is usable day to day, but it is
-> not feature-complete against upstream and there are no published builds yet — see
-> [Status](#status) and [Build](#build).
+> **Early beta.** Version 0.1.0. It runs, plays video and is usable day to day, but it is not
+> feature-complete against upstream — see [Status](#status). Signed builds are on the
+> [Releases](https://github.com/alkevintan/Pocketwatch/releases) page, or build it yourself from
+> [Build](#build).
 
 ## What this fork changes
 
